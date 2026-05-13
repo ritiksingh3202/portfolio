@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00aaff;
+  --color-primary-foreground: #ffffff;
+  
+  --color-accent: #00d2ff;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --font-sans: "Times New Roman", Times, serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-display: "Times New Roman", Times, serif;
+  --font-outfit: "Times New Roman", Times, serif;
+  --font-instrument: "Times New Roman", Times, serif;
+  
+  --background-image-sky-gradient: var(--sky-gradient);
+  
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-sway: sway 20s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(10px, -5px) rotate(1deg); }
+    66% { transform: translate(-5px, 5px) rotate(-1deg); }
+  }
+}
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #020617;
+  --primary: #1d4ed8;
+  --card: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --selection: rgba(29, 78, 216, 0.1);
+  --sky-gradient: linear-gradient(180deg, #1e40af 0%, #3b82f6 40%, #60a5fa 80%, #93c5fd 100%);
+}
+
+.dark {
+  --background: #010409;
+  --foreground: #f0f6fc;
+  --primary: #3b82f6;
+  --card: rgba(13, 17, 23, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --selection: rgba(59, 130, 246, 0.4);
+  --sky-gradient: radial-gradient(circle at 50% -20%, #1e3a8a 0%, #010409 100%);
+}
+
+* {
+  border-color: var(--glass-border);
+}
+
+::selection {
+  background-color: var(--selection);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Times New Roman", Times, serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 170, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 170, 255, 0.4);
+}
