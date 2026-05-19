@@ -15,7 +15,7 @@ import { EASE } from "@/motion/config";
 const navLinks = [
   { name: "Let's Connect", href: "/#contact" },
   { name: "Work", href: "/#projects" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/#about" },
   { name: "Resume", href: "/resume" },
 ];
 

@@ -3,8 +3,11 @@
 import { Navbar } from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Hero } from "@/sections/Hero";
-import { ImpactStats } from "@/sections/ImpactStats";
+import { HomeAbout } from "@/sections/HomeAbout";
 import FeaturedProjects from "@/components/projects/FeaturedProjects";
+import { TechStack } from "@/sections/TechStack";
+import { HomeExperience } from "@/sections/HomeExperience";
+import { HomeEducation } from "@/sections/HomeEducation";
 import { FAQs } from "@/sections/FAQs";
 import { contact } from "@/data/about";
 
@@ -13,8 +16,11 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <ImpactStats />
+      <HomeAbout />
       <FeaturedProjects />
+      <TechStack />
+      <HomeExperience />
+      <HomeEducation />
       <FAQs />
       <Footer
         name={contact.footerName}

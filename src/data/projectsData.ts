@@ -28,10 +28,10 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     id: 2,
-    name: "ResiLens",
+    name: "Resilens",
     description:
-      "Smart property insights and residency planning tools with dashboards designed for fast, confident decisions.",
-    tag: "SaaS Landing Page",
+      "AI-powered code review web app that surfaces issues, suggests fixes, and helps teams ship cleaner code with confidence.",
+    tag: "Web App",
     category: "web",
     image: "/project_assets/resilens/resilens_cover.png",
     aspectRatio: "3 / 2",
@@ -64,7 +64,7 @@ export const featuredProjects: FeaturedProject[] = [
     name: "LuxeJewel",
     description:
       "Luxury jewelry shopping experience with curated collections, rich product detail, and a polished mobile-first UI.",
-    tag: "iOS App",
+    tag: "Mobile App",
     category: "app",
     image: "/project_assets/gold-app/gold_cover.png",
     aspectRatio: "1448 / 1086",
@@ -75,7 +75,7 @@ export const featuredProjects: FeaturedProject[] = [
     name: "Edunova",
     description:
       "Education platform connecting learners with courses, progress tracking, and an intuitive study-first interface.",
-    tag: "Android App",
+    tag: "Mobile App",
     category: "app",
     image: "/project_assets/edunova-app/edunova_cover.png",
     aspectRatio: "1448 / 1086",

@@ -261,8 +261,8 @@
   --project-card-hover-shadow: 0 24px 48px -16px rgba(15, 23, 42, 0.14);
   --project-title: #111111;
   --project-description: #555555;
-  --project-tag-bg: #eeeeee;
-  --project-tag-border: #e5e5e5;
+  --project-tag-bg: #f0f0f0;
+  --project-tag-border: transparent;
   --project-tag-text: #666666;
   --project-divider-bg: #ffffff;
   --project-divider-border: #e5e5e5;
@@ -279,9 +279,9 @@
   --project-card-hover-shadow: 0 28px 56px -20px rgba(0, 0, 0, 0.55);
   --project-title: #ffffff;
   --project-description: #aaaaaa;
-  --project-tag-bg: #1e1e1e;
-  --project-tag-border: #2a2a2a;
-  --project-tag-text: #999999;
+  --project-tag-bg: #f0f0f0;
+  --project-tag-border: transparent;
+  --project-tag-text: #666666;
   --project-divider-bg: #111111;
   --project-divider-border: #2a2a2a;
   --project-divider-text: #888888;
@@ -312,6 +312,104 @@
 
 .impact-stats {
   background: var(--impact-stats-bg);
+}
+
+/* Home page sections (identity, tech stack, experience, education) */
+:root {
+  --home-section-bg: #ffffff;
+  --home-heading: #111111;
+  --home-muted: #666666;
+  --home-card-bg: #f5f5f5;
+  --home-card-border: #e5e5e5;
+  --home-card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --home-date-bg: #eeeeee;
+  --home-date-text: #666666;
+  --home-icon-bg: #ffffff;
+  --home-identity-frame-bg: #ffffff;
+}
+
+.dark {
+  --home-section-bg: #000000;
+  --home-heading: #ffffff;
+  --home-muted: #a1a1aa;
+  --home-card-bg: #111111;
+  --home-card-border: #222222;
+  --home-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --home-date-bg: #1a1a1a;
+  --home-date-text: #a1a1aa;
+  --home-icon-bg: #1a1a1a;
+  --home-identity-frame-bg: #0a0a0a;
+}
+
+.home-section {
+  background: var(--home-section-bg);
+}
+
+.home-card {
+  background: var(--home-card-bg);
+  border: 1px solid var(--home-card-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--home-card-shadow);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.home-date-pill {
+  background: var(--home-date-bg);
+  border: 1px solid var(--home-card-border);
+  color: var(--home-date-text);
+}
+
+.home-icon-wrap {
+  background: var(--home-icon-bg);
+  border: 1px solid var(--home-card-border);
+  color: var(--home-heading);
+}
+
+.home-stakes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .home-stakes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .home-stakes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Light tile so dark SVG/PNG logos stay visible in dark mode */
+.home-tech-icon {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.dark .home-tech-icon {
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.home-identity-glow {
+  background: radial-gradient(
+    circle at 50% 28%,
+    rgba(244, 63, 94, 0.45) 0%,
+    rgba(244, 63, 94, 0.12) 35%,
+    transparent 65%
+  );
+}
+
+.home-identity-frame {
+  background: var(--home-identity-frame-bg);
 }
 
 .featured-projects {

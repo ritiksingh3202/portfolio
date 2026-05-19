@@ -40,55 +40,38 @@ export const stats = [
   { value: "8+", label: "Awards Received" },
 ];
 
+const fullStackBio =
+  "Full stack developer with hands-on experience turning ideas into thoughtful, intuitive web and mobile products. I've worked with teams and clients across different domains — each project pushing me to build smarter, cleaner, and more meaningful experiences.";
+
 export const experiences = [
   {
     id: "1",
-    title: "Senior Full Stack Developer",
-    company: "Tech Studio",
-    period: "2023 — Present",
-    description:
-      "Leading end-to-end product builds with Next.js, React Native, and cloud backends. Partnering with design to ship polished, performant experiences.",
-    logo: "T",
-    logoColor: "bg-amber-500/20 text-amber-400",
+    title: "Full-Stack Developer & CTO",
+    company: "Commonsia",
+    period: "March 2026 — Present",
+    description: fullStackBio,
+    logo: "C",
+    logoColor: "bg-indigo-500/20 text-indigo-400",
   },
   {
     id: "2",
-    title: "UI/UX & Frontend Engineer",
-    company: "Product Labs",
-    period: "2021 — 2023",
+    title: "UI/UX Designer and Frontend Engineer",
+    company: "TechTimes.ai",
+    period: "June 2024 — Nov 2025",
     description:
-      "Designed and developed marketing sites and SaaS dashboards for global brands with a focus on motion, accessibility, and pixel-perfect UI.",
-    logo: "P",
-    logoColor: "bg-slate-500/20 text-slate-300",
-  },
-  {
-    id: "3",
-    title: "Full Stack Developer",
-    company: "Startup Foundry",
-    period: "2019 — 2021",
-    description:
-      "Built MVPs and production apps across web and mobile — APIs, databases, and client-facing interfaces from zero to launch.",
-    logo: "S",
-    logoColor: "bg-emerald-500/20 text-emerald-400",
+      "Designed and built product interfaces and frontend experiences — from UX flows and visual design to responsive, production-ready implementation.",
+    logo: "T",
+    logoColor: "bg-sky-500/20 text-sky-400",
   },
 ];
 
 export const education = [
   {
     id: "1",
-    title: "Full Stack Development Certification",
-    institution: "Online Program",
-    period: "2020 — 2021",
-    description:
-      "Advanced training in modern web stacks — React, Node.js, databases, deployment, and collaborative product delivery.",
-  },
-  {
-    id: "2",
-    title: "Bachelor of Technology",
-    institution: "Computer Science & Engineering",
-    period: "2016 — 2020",
-    description:
-      "Foundation in algorithms, systems, and software engineering with projects spanning web apps and mobile prototypes.",
+    title: "Bachelor of Architecture",
+    institution: "IIT Roorkee",
+    period: "2023 — 2028",
+    description: fullStackBio,
   },
 ];
 

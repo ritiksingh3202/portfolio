@@ -72,13 +72,13 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
           </h3>
         </div>
 
-        <p className="mt-2 min-h-[4.25rem] line-clamp-3 text-sm leading-relaxed text-[var(--project-description)]">
-          {project.description}
-        </p>
-
-        <span className="mt-auto inline-flex w-fit rounded-full border border-[var(--project-tag-border)] bg-[var(--project-tag-bg)] px-3 py-1 pt-4 text-xs font-medium text-[var(--project-tag-text)]">
+        <span className="mt-2.5 inline-flex w-fit rounded-full bg-[var(--project-tag-bg)] px-3 py-1 text-xs font-medium text-[var(--project-tag-text)]">
           {project.tag}
         </span>
+
+        <p className="mt-3 min-h-[4.25rem] line-clamp-3 text-sm leading-relaxed text-[var(--project-description)]">
+          {project.description}
+        </p>
       </div>
     </m.article>
   );
@@ -101,7 +101,7 @@ function CategoryDivider({ label }: { label: string }) {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={VIEWPORT}
       transition={{ duration: DURATION.normal, ease: EASE.out }}
-      className="flex justify-center py-10 sm:py-12 md:justify-start"
+      className="flex justify-start py-10 sm:py-12"
     >
       <span className="inline-flex rounded-full border border-[var(--project-divider-border)] bg-[var(--project-divider-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--project-divider-text)] sm:text-sm">
         {label}
@@ -153,7 +153,12 @@ export default function FeaturedProjects({
           </p>
         </m.header>
 
-        <ProjectGrid projects={webProjects} />
+        {webProjects.length > 0 && (
+          <>
+            <CategoryDivider label="Web Development" />
+            <ProjectGrid projects={webProjects} />
+          </>
+        )}
 
         {appProjects.length > 0 && (
           <>

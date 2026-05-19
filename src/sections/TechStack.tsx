@@ -1,71 +1,59 @@
 "use client";
 
+import Image from "next/image";
 import { m } from "framer-motion";
-import { Reveal } from "@/components/Reveal";
-import { fadeUp, staggerContainer } from "@/motion/variants";
+import { Layers } from "lucide-react";
+import { techStack } from "@/data/techStack";
+import { SectionBlockHeading } from "@/components/home/SectionBlockHeading";
 import { VIEWPORT, EASE } from "@/motion/config";
-
-const skills = [
-  { name: "React", icon: "⚛️", level: "Expert" },
-  { name: "Next.js", icon: "▲", level: "Expert" },
-  { name: "TypeScript", icon: "TS", level: "Senior" },
-  { name: "Flutter", icon: "💙", level: "Senior" },
-  { name: "Tailwind CSS", icon: "🎨", level: "Expert" },
-  { name: "Node.js", icon: "🟢", level: "Advanced" },
-  { name: "PostgreSQL", icon: "🐘", level: "Advanced" },
-  { name: "GraphQL", icon: "⬡", level: "Advanced" },
-  { name: "Docker", icon: "🐳", level: "Intermediate" },
-  { name: "AWS", icon: "☁️", level: "Intermediate" },
-  { name: "Framer Motion", icon: "✨", level: "Advanced" },
-  { name: "Figma", icon: "🎨", level: "Advanced" },
-];
 
 export function TechStack() {
   return (
-    <section id="stack" className="py-20 md:py-32 bg-background/50">
-      <div className="container mx-auto px-4 sm:px-6">
-        <Reveal className="text-center mb-12 md:mb-16">
-          <p className="text-primary font-medium tracking-wider uppercase mb-2 text-[10px] md:text-sm">
-            My Arsenal
-          </p>
-          <h2 className="text-3xl md:text-6xl font-bold font-display">Tech Stack</h2>
-        </Reveal>
-
+    <section
+      id="tech-stack"
+      className="home-section scroll-mt-28 py-16 sm:py-20 md:py-24"
+    >
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionBlockHeading icon={Layers} title="Tech Stack" />
         <m.div
-          variants={staggerContainer(0.05)}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.05 } },
+          }}
+          className="home-stakes-grid"
         >
-          {skills.map((skill, index) => (
-            <m.div
-              key={skill.name}
-              variants={fadeUp}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ duration: 0.35, ease: EASE.out }}
-              className="p-5 md:p-8 glass rounded-2xl md:rounded-3xl border border-white/5 flex flex-col items-center text-center group cursor-default"
+          {techStack.map((tool) => (
+            <m.article
+              key={tool.id}
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5, ease: EASE.out }}
+              whileHover={{ y: -3 }}
+              className="home-card flex min-h-[4.75rem] items-center gap-3 p-3.5 sm:min-h-[5.25rem] sm:gap-3.5 sm:p-4"
             >
-              <m.div
-                whileHover={{ scale: 1.15 }}
-                transition={{ duration: 0.3 }}
-                className="text-3xl md:text-4xl mb-3 md:mb-4 grayscale group-hover:grayscale-0 transition-all duration-300"
-              >
-                {skill.icon}
-              </m.div>
-              <h3 className="text-lg md:text-xl font-bold mb-1">{skill.name}</h3>
-              <p className="text-foreground/40 text-xs md:text-sm">{skill.level}</p>
-
-              <div className="mt-4 w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                <m.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={VIEWPORT}
-                  transition={{ duration: 1, delay: 0.3 + index * 0.05, ease: EASE.out }}
-                  className="h-full bg-primary/30"
+              <div className="home-tech-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 sm:h-12 sm:w-12">
+                <Image
+                  src={tool.icon}
+                  alt={`${tool.name} logo`}
+                  width={48}
+                  height={48}
+                  className="h-full w-full object-contain"
                 />
               </div>
-            </m.div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold leading-snug text-[var(--home-heading)] sm:text-base">
+                  {tool.name}
+                </h3>
+                <p className="text-xs text-[var(--home-muted)] sm:text-sm">
+                  {tool.subtitle}
+                </p>
+              </div>
+            </m.article>
           ))}
         </m.div>
       </div>
