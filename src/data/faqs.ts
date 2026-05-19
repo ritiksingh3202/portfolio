@@ -9,7 +9,7 @@ export const faqs: FaqItem[] = [
     id: "services",
     question: "What services do you offer?",
     answer:
-      "Full stack web and mobile development — SaaS dashboards, marketing sites, MVPs, and internal tools. I handle UI, APIs, databases, and deployment with a focus on clean design and smooth interactions.",
+      "Full stack web and mobile development: SaaS dashboards, marketing sites, MVPs, and internal tools. I handle UI, APIs, databases, and deployment with a focus on clean design and smooth interactions.",
   },
   {
     id: "timeline",
@@ -33,6 +33,6 @@ export const faqs: FaqItem[] = [
     id: "code",
     question: "Will I need to code anything?",
     answer:
-      "No. I handle design and development end to end. You'll review progress, share feedback, and approve milestones — no coding required on your side unless you want to collaborate technically.",
+      "No. I handle design and development end to end. You'll review progress, share feedback, and approve milestones. No coding is required on your side unless you want to collaborate technically.",
   },
 ];

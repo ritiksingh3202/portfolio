@@ -5,56 +5,57 @@ import { m } from "framer-motion";
 import { Layers } from "lucide-react";
 import { techStack } from "@/data/techStack";
 import { SectionBlockHeading } from "@/components/home/SectionBlockHeading";
-import { VIEWPORT, EASE } from "@/motion/config";
+import { InfiniteMarquee } from "@/components/motion/InfiniteMarquee";
+import { VIEWPORT, EASE, DURATION } from "@/motion/config";
+
+function TechChip({ name, icon }: { name: string; icon: string }) {
+  return (
+    <div className="tech-marquee-chip shrink-0" data-cursor-hover>
+      <div className="home-tech-icon flex h-10 w-10 items-center justify-center rounded-lg p-1.5">
+        <Image
+          src={icon}
+          alt={`${name} logo`}
+          width={36}
+          height={36}
+          className="h-full w-full object-contain"
+        />
+      </div>
+      <span className="whitespace-nowrap text-sm font-semibold text-[var(--home-heading)]">
+        {name}
+      </span>
+    </div>
+  );
+}
 
 export function TechStack() {
+  const midpoint = Math.ceil(techStack.length / 2);
+  const row1 = techStack.slice(0, midpoint);
+  const row2 = techStack.slice(midpoint);
+
   return (
     <section
       id="tech-stack"
-      className="home-section scroll-mt-28 py-16 sm:py-20 md:py-24"
+      className="home-section scroll-mt-28 overflow-hidden py-16 sm:py-20 md:py-28"
     >
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <SectionBlockHeading icon={Layers} title="Tech Stack" />
         <m.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.05 } },
-          }}
-          className="home-stakes-grid"
+          transition={{ duration: DURATION.slow, ease: EASE.out }}
+          className="space-y-4 md:space-y-5"
         >
-          {techStack.map((tool) => (
-            <m.article
-              key={tool.id}
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5, ease: EASE.out }}
-              whileHover={{ y: -3 }}
-              className="home-card flex min-h-[4.75rem] items-center gap-3 p-3.5 sm:min-h-[5.25rem] sm:gap-3.5 sm:p-4"
-            >
-              <div className="home-tech-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl p-2 sm:h-12 sm:w-12">
-                <Image
-                  src={tool.icon}
-                  alt={`${tool.name} logo`}
-                  width={48}
-                  height={48}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-sm font-bold leading-snug text-[var(--home-heading)] sm:text-base">
-                  {tool.name}
-                </h3>
-                <p className="text-xs text-[var(--home-muted)] sm:text-sm">
-                  {tool.subtitle}
-                </p>
-              </div>
-            </m.article>
-          ))}
+          <InfiniteMarquee direction="left" speed={30}>
+            {row1.map((tool) => (
+              <TechChip key={tool.id} name={tool.name} icon={tool.icon} />
+            ))}
+          </InfiniteMarquee>
+          <InfiniteMarquee direction="right" speed={30}>
+            {row2.map((tool) => (
+              <TechChip key={tool.id} name={tool.name} icon={tool.icon} />
+            ))}
+          </InfiniteMarquee>
         </m.div>
       </div>
     </section>

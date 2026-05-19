@@ -21,7 +21,7 @@ export function SectionHeader({ number, label, title }: SectionHeaderProps) {
     >
       <m.h2
         variants={fadeLeft}
-        className="text-5xl md:text-8xl font-serif italic text-primary/40"
+        className="text-5xl md:text-8xl font-semibold italic tracking-tight text-primary/40"
       >
         {number}
       </m.h2>
@@ -32,7 +32,7 @@ export function SectionHeader({ number, label, title }: SectionHeaderProps) {
         >
           {label}
         </m.p>
-        <m.h2 variants={fadeUp} className="text-3xl md:text-6xl font-serif">
+        <m.h2 variants={fadeUp} className="text-3xl md:text-6xl font-semibold tracking-tight">
           {title}
         </m.h2>
       </div>

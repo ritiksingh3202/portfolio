@@ -40,7 +40,7 @@ export function About({ isPage = false }: AboutProps) {
             <p className="text-lg text-muted-foreground leading-relaxed">
               I&apos;ve been writing software since I was 15. Started with HTML on
               a borrowed laptop, ended up shipping production apps to millions. I
-              care about the boring details — first paint times, accessibility,
+              care about the boring details: first paint times, accessibility,
               the curve on a loading spinner.
             </p>
           </Reveal>

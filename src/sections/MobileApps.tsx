@@ -56,7 +56,7 @@ export function MobileApps() {
                     {app.icon}
                   </m.div>
                   <div className="space-y-2">
-                    <h3 className="text-xl md:text-2xl font-serif">{app.name}</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight">{app.name}</h3>
                     <p className="text-foreground/40 text-[10px] md:text-xs font-bold uppercase tracking-widest">
                       {app.type}
                     </p>

@@ -41,27 +41,27 @@ export const stats = [
 ];
 
 const fullStackBio =
-  "Full stack developer with hands-on experience turning ideas into thoughtful, intuitive web and mobile products. I've worked with teams and clients across different domains — each project pushing me to build smarter, cleaner, and more meaningful experiences.";
+"I am Ritik Raj, a Full Stack Developer focused on building immersive web and mobile experiences where engineering meets thoughtful design. I enjoy crafting interfaces that feel smooth, intentional, and visually engaging — combining clean code, motion, interaction, and modern UI systems into products people genuinely enjoy using.";
 
 export const experiences = [
   {
     id: "1",
-    title: "Full-Stack Developer & CTO",
-    company: "Commonsia",
-    period: "March 2026 — Present",
-    description: fullStackBio,
-    logo: "C",
-    logoColor: "bg-indigo-500/20 text-indigo-400",
+    title: "UI/UX Designer and Frontend Engineer",
+    company: "TechTimes.ai",
+    period: "June 2024 to Nov 2025",
+    description:
+      "Designed and built product interfaces and frontend experiences, from UX flows and visual design to responsive, production-ready implementation.",
+    logo: "T",
+    logoColor: "bg-sky-500/20 text-sky-400",
   },
   {
     id: "2",
-    title: "UI/UX Designer and Frontend Engineer",
-    company: "TechTimes.ai",
-    period: "June 2024 — Nov 2025",
-    description:
-      "Designed and built product interfaces and frontend experiences — from UX flows and visual design to responsive, production-ready implementation.",
-    logo: "T",
-    logoColor: "bg-sky-500/20 text-sky-400",
+    title: "Full-Stack Developer & CTO",
+    company: "Commonsia",
+    period: "March 2026 to Present",
+    description: fullStackBio,
+    logo: "C",
+    logoColor: "bg-indigo-500/20 text-indigo-400",
   },
 ];
 
@@ -70,7 +70,7 @@ export const education = [
     id: "1",
     title: "Bachelor of Architecture",
     institution: "IIT Roorkee",
-    period: "2023 — 2028",
+    period: "2023 to 2028",
     description: fullStackBio,
   },
 ];

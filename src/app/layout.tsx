@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import { CursorGlow } from "@/components/motion/CursorGlow";
+import { MotionShell } from "@/components/motion/MotionShell";
 
 export const metadata: Metadata = {
   title: "Portfolio | Premium Full Stack Developer",
@@ -24,8 +24,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans" suppressHydrationWarning>
         <MotionProvider>
-          <CursorGlow />
-          {children}
+          <MotionShell>{children}</MotionShell>
         </MotionProvider>
       </body>
     </html>

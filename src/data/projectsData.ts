@@ -19,7 +19,7 @@ export const featuredProjects: FeaturedProject[] = [
     id: 1,
     name: "Commonsia",
     description:
-      "A community-driven platform for shared resources, events, and collaboration — built for clarity, speed, and scale.",
+      "A community-driven platform for shared resources, events, and collaboration, built for clarity, speed, and scale.",
     tag: "Web App",
     category: "web",
     image: "/project_assets/commonsia/commonsia_cover.png",
@@ -52,7 +52,7 @@ export const featuredProjects: FeaturedProject[] = [
     id: 4,
     name: "My Portfolio",
     description:
-      "This site — a motion-rich portfolio showcasing full stack work, thoughtful UI, and premium light/dark experiences.",
+      "This site is a motion-rich portfolio showcasing full stack work, thoughtful UI, and premium light and dark experiences.",
     tag: "Portfolio Website",
     category: "web",
     image: "/project_assets/portfolio/portfolio_cover.png",

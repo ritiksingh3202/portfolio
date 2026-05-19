@@ -25,6 +25,12 @@ export const VIEWPORT = {
   margin: "-80px",
 } as const;
 
+export const VIEWPORT_PROJECTS = {
+  once: true,
+  amount: 0.2,
+  margin: "-60px",
+} as const;
+
 export const STAGGER = {
   fast: 0.06,
   normal: 0.1,

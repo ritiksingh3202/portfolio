@@ -2,25 +2,33 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import {
   featuredProjects,
   type FeaturedProject,
 } from "@/data/projectsData";
-import { VIEWPORT, EASE, DURATION } from "@/motion/config";
-import { fadeUp, staggerContainer } from "@/motion/variants";
+import { VIEWPORT, VIEWPORT_PROJECTS, EASE, DURATION } from "@/motion/config";
+import { projectCard, categoryPill, staggerContainer } from "@/motion/variants";
+
 type FeaturedProjectsProps = {
   projects?: FeaturedProject[];
 };
 
 function ProjectCard({ project }: { project: FeaturedProject }) {
+  const reduced = useReducedMotion();
   const initial = project.name.charAt(0).toUpperCase();
 
   const card = (
     <m.article
-      variants={fadeUp}
-      whileHover={{ y: -6 }}
-      transition={{ duration: DURATION.normal, ease: EASE.out }}
+      variants={projectCard}
+      whileHover={
+        reduced
+          ? undefined
+          : {
+              y: -8,
+              transition: { duration: DURATION.fast, ease: EASE.out },
+            }
+      }
       className="featured-project-card group flex h-full w-full cursor-pointer flex-col"
     >
       <div
@@ -29,7 +37,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
       >
         <m.div
           className="absolute inset-0"
-          whileHover={{ scale: 1.03 }}
+          whileHover={reduced ? undefined : { scale: 1.05 }}
           transition={{ duration: 0.55, ease: EASE.out }}
         >
           <Image
@@ -42,9 +50,9 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
           />
         </m.div>
         <div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="featured-project-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:group-hover:opacity-100"
           style={{
-            background: `radial-gradient(ellipse at 50% 100%, ${project.iconColor}33 0%, transparent 65%)`,
+            background: `radial-gradient(ellipse at 50% 100%, ${project.iconColor}44 0%, transparent 68%)`,
           }}
         />
       </div>
@@ -85,7 +93,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
 
   if (project.href) {
     return (
-      <Link href={project.href} className="block h-full w-full outline-none">
+      <Link href={project.href} className="block h-full w-full outline-none" data-cursor-hover>
         {card}
       </Link>
     );
@@ -97,13 +105,13 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
 function CategoryDivider({ label }: { label: string }) {
   return (
     <m.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      variants={categoryPill}
+      initial="hidden"
+      whileInView="visible"
       viewport={VIEWPORT}
-      transition={{ duration: DURATION.normal, ease: EASE.out }}
-      className="flex justify-start py-10 sm:py-12"
+      className="flex justify-start py-8 sm:py-10"
     >
-      <span className="inline-flex rounded-full border border-[var(--project-divider-border)] bg-[var(--project-divider-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--project-divider-text)] sm:text-sm">
+      <span className="inline-flex rounded-full border border-[var(--project-divider-border)] bg-[var(--project-divider-bg)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--project-divider-text)] shadow-sm sm:text-xs">
         {label}
       </span>
     </m.div>
@@ -114,10 +122,10 @@ function ProjectGrid({ projects }: { projects: FeaturedProject[] }) {
   return (
     <m.div
       className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:items-stretch md:gap-x-8 md:gap-y-12 lg:gap-x-10"
-      variants={staggerContainer(0.1, 0.05)}
+      variants={staggerContainer(0.15, 0.05)}
       initial="hidden"
       whileInView="visible"
-      viewport={VIEWPORT}
+      viewport={VIEWPORT_PROJECTS}
     >
       {projects.map((project) => (
         <ProjectCard key={project.id} project={project} />
@@ -135,20 +143,20 @@ export default function FeaturedProjects({
   return (
     <section
       id="projects"
-      className="featured-projects relative scroll-mt-28 overflow-hidden py-20 sm:py-24 md:py-32"
+      className="featured-projects relative scroll-mt-28 overflow-hidden py-16 sm:py-20 md:py-28"
     >
       <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <m.header
-          className="mx-auto mb-14 max-w-2xl text-center sm:mb-16 md:mb-20"
-          initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          className="mx-auto mb-12 max-w-2xl text-center sm:mb-14 md:mb-16"
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT}
           transition={{ duration: DURATION.slow, ease: EASE.out }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-[var(--project-title)] sm:text-4xl md:text-5xl">
             Featured Projects
           </h2>
-          <p className="mt-4 text-base text-[var(--project-description)] sm:text-lg">
+          <p className="mt-3 text-sm text-[var(--project-description)] sm:mt-4 sm:text-base md:text-lg">
             A quick peek at some of the projects I&apos;ve loved building.
           </p>
         </m.header>

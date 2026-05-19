@@ -82,6 +82,26 @@ export const textReveal: Variants = {
   },
 };
 
+/** Project card scroll reveal */
+export const projectCard: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.slow, ease: EASE.out },
+  },
+};
+
+/** Category pill slide-in */
+export const categoryPill: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: DURATION.normal, ease: EASE.out },
+  },
+};
+
 /** Card hover parent */
 export const cardHover = {
   rest: { scale: 1, y: 0 },

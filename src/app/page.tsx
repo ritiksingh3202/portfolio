@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Hero } from "@/sections/Hero";
 import { HomeAbout } from "@/sections/HomeAbout";
+import { ImpactStats } from "@/sections/ImpactStats";
 import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import { TechStack } from "@/sections/TechStack";
 import { HomeExperience } from "@/sections/HomeExperience";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <HomeAbout />
+      <ImpactStats />
       <FeaturedProjects />
       <TechStack />
       <HomeExperience />

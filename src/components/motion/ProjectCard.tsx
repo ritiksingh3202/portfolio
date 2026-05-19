@@ -76,7 +76,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.category}
             </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-serif group-hover:text-primary transition-colors duration-500">
+          <h3 className="text-2xl md:text-3xl font-semibold tracking-tight group-hover:text-primary transition-colors duration-500">
             {project.title}
           </h3>
           <p className="text-foreground/50 text-sm md:text-base line-clamp-2 leading-relaxed">

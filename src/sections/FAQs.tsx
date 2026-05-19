@@ -72,7 +72,7 @@ export function FAQs() {
   return (
     <section
       id="faqs"
-      className="faq-section relative overflow-hidden scroll-mt-28 py-20 sm:py-28 md:py-32"
+      className="faq-section relative overflow-hidden scroll-mt-28 py-16 sm:py-20 md:py-28"
     >
       <div
         className="faq-section-glow pointer-events-none absolute -left-32 top-1/4 h-[min(520px,80vw)] w-[min(520px,80vw)] -translate-y-1/2 rounded-full"
@@ -81,16 +81,16 @@ export function FAQs() {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
         <m.header
-          className="mx-auto mb-12 max-w-3xl text-center sm:mb-16 md:mb-20"
+          className="mx-auto mb-10 max-w-3xl text-center sm:mb-14 md:mb-16"
           initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={VIEWPORT}
           transition={{ duration: DURATION.slow, ease: EASE.out }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-[var(--faq-question)] sm:text-5xl md:text-6xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[var(--faq-question)] sm:text-4xl md:text-5xl">
             FAQs
           </h2>
-          <p className="mt-3 text-base text-[var(--faq-answer)] sm:mt-4 sm:text-lg">
+          <p className="mt-3 text-sm text-[var(--faq-answer)] sm:mt-4 sm:text-base md:text-lg">
             A few common questions, answered simply.
           </p>
         </m.header>

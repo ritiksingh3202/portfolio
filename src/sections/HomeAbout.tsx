@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { m } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { identity, skillTags } from "@/data/home";
 import { VIEWPORT, EASE, DURATION } from "@/motion/config";
 import { fadeUp, staggerContainer } from "@/motion/variants";
 
 export function HomeAbout() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="about"
-      className="home-section scroll-mt-28 py-16 sm:py-20 md:py-24"
+      className="home-section scroll-mt-28 py-16 sm:py-20 md:py-28"
     >
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-16">
@@ -69,7 +71,11 @@ export function HomeAbout() {
                 </div>
               )}
 
-              <div className="home-identity-photo relative mt-10 aspect-[3/4] overflow-hidden rounded-[1.5rem] sm:rounded-[1.65rem]">
+              <m.div
+                animate={reduced ? undefined : { y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="home-identity-photo relative mt-10 aspect-[3/4] overflow-hidden rounded-[1.5rem] sm:rounded-[1.65rem]"
+              >
                 <div className="home-identity-glow pointer-events-none absolute inset-0 z-0" />
                 <Image
                   src={identity.image}
@@ -96,7 +102,7 @@ export function HomeAbout() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </m.div>
             </div>
           </m.div>
         </div>

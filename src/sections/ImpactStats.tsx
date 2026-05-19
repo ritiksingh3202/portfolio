@@ -72,7 +72,7 @@ function ShuffleCountUp({
     <m.span
       ref={ref}
       className={cn(
-        "inline-flex items-baseline whitespace-nowrap font-serif tabular-nums",
+        "inline-flex items-baseline whitespace-nowrap tabular-nums",
         className
       )}
       animate={

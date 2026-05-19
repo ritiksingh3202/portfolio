@@ -3,8 +3,8 @@ export const identity = {
   headline: "Hey,",
   role: "full stack developer",
   paragraphs: [
-    "Full stack developer with hands-on experience turning ideas into thoughtful, intuitive web and mobile products. I've worked with teams and clients across different domains — each project pushing me to build smarter, cleaner, and more meaningful experiences.",
-    "I love what I do, and I'm always exploring new ways to blend engineering with design. Whether it's motion, interaction, or layout — I'm all in.",
+    "Full stack developer with hands-on experience turning ideas into thoughtful, intuitive web and mobile products. I've worked with teams and clients across different domains, and each project pushes me to build smarter, cleaner, and more meaningful experiences.",
+    "I love what I do, and I'm always exploring new ways to blend engineering with design. Whether it's motion, interaction, or layout, I'm all in.",
   ],
   available: true,
   image:
@@ -22,5 +22,4 @@ export const skillTags: SkillTag[] = [
   { label: "UI/UX Engineer", bg: "#1e3a5f", icon: "◇" },
   { label: "React & Next.js", bg: "#450a0a", icon: "▣" },
   { label: "Mobile Apps", bg: "#134e4a", icon: "⚡" },
-  { label: "Sr. Full Stack Developer", bg: "#14532d", icon: "✦" },
 ];
