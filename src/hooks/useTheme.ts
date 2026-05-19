@@ -1,45 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export type Theme = "light" | "dark";
 
+function readThemeFromDocument(): Theme {
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    const initialColorValue = root.classList.contains("dark") ? "dark" : "light";
-    setTheme(initialColorValue);
+    setTheme(readThemeFromDocument());
+    setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    const root = window.document.documentElement;
-    if (newTheme === "dark") {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
+  const toggleTheme = useCallback(() => {
+    setTheme((current) => {
+      const next = current === "light" ? "dark" : "light";
+      const root = document.documentElement;
+      if (next === "dark") {
+        root.classList.add("dark");
+        localStorage.setItem("theme", "dark");
       } else {
-        document.documentElement.classList.remove("dark");
+        root.classList.remove("dark");
+        localStorage.setItem("theme", "light");
       }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
+      return next;
+    });
   }, []);
 
-  return { theme, toggleTheme };
+  return { theme: mounted ? theme : "dark", toggleTheme, mounted };
 }

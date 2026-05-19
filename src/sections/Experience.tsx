@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 
 const experiences = [
@@ -34,25 +34,25 @@ export function Experience() {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 md:mb-16">
-            <motion.p
+            <m.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="text-primary font-medium tracking-wider uppercase mb-2 text-[10px] md:text-sm"
             >
               My Journey
-            </motion.p>
-            <motion.h2
+            </m.p>
+            <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="text-3xl md:text-6xl font-bold font-display"
             >
               Professional Experience
-            </motion.h2>
+            </m.h2>
           </div>
 
           <div className="space-y-8 md:space-y-12">
             {experiences.map((exp, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -92,7 +92,7 @@ export function Experience() {
                   {/* Empty Spacer for desktop alignment */}
                   <div className="hidden md:block md:w-1/2" />
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

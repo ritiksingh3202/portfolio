@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Mail, MessageSquare, Send, ArrowUpRight } from "lucide-react";
 
 export function Contact() {
@@ -14,48 +14,55 @@ export function Contact() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
             <div>
-              <motion.p
+              <m.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 className="text-primary font-medium tracking-wider uppercase mb-2 text-[10px] md:text-sm"
               >
                 Get In Touch
-              </motion.p>
-              <motion.h2
+              </m.p>
+              <m.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 className="text-3xl md:text-6xl font-bold font-display mb-6 md:mb-8"
               >
                 Let's Build Something <br /> <span className="text-primary">Extraordinary</span>
-              </motion.h2>
+              </m.h2>
               
               <p className="text-base md:text-lg text-foreground/60 mb-8 md:mb-12 max-w-md">
                 Have a project in mind or just want to chat? Feel free to reach out. I'm always open to new opportunities and collaborations.
               </p>
               
               <div className="space-y-4 md:space-y-6">
-                <a href="mailto:hello@example.com" className="flex items-center gap-4 group">
+                <a href="mailto:ritikraj.ip@gmail.com" className="flex items-center gap-4 group">
                   <div className="p-3 md:p-4 glass rounded-2xl group-hover:bg-primary transition-all shrink-0">
                     <Mail className="group-hover:text-white transition-colors" size={20} />
                   </div>
                   <div className="truncate">
                     <p className="text-[10px] md:text-sm text-foreground/40">Email me at</p>
-                    <p className="text-lg md:text-xl font-bold truncate">hello@portfolio.com</p>
+                    <p className="text-lg md:text-xl font-bold truncate">ritikraj.ip@gmail.com</p>
                   </div>
                 </a>
-                <a href="#" className="flex items-center gap-4 group">
+                <a
+                  href="https://www.linkedin.com/in/ritik-raj-7093701bb/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group"
+                >
                   <div className="p-3 md:p-4 glass rounded-2xl group-hover:bg-primary transition-all shrink-0">
                     <MessageSquare className="group-hover:text-white transition-colors" size={20} />
                   </div>
                   <div>
                     <p className="text-[10px] md:text-sm text-foreground/40">Connect on LinkedIn</p>
-                    <p className="text-lg md:text-xl font-bold flex items-center gap-1">Ritik Singh <ArrowUpRight size={18} /></p>
+                    <p className="text-lg md:text-xl font-bold flex items-center gap-1">
+                      Ritik Raj <ArrowUpRight size={18} />
+                    </p>
                   </div>
                 </a>
               </div>
             </div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-8 backdrop-blur-xl"
@@ -91,7 +98,7 @@ export function Contact() {
                   Send Message <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </form>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>
