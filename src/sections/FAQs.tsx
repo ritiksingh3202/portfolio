@@ -2,80 +2,49 @@
 
 import { useState } from "react";
 import { m, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { faqs, type FaqItem } from "@/data/faqs";
-import { SectionHeader } from "@/components/motion/SectionHeader";
 import { VIEWPORT, EASE, DURATION } from "@/motion/config";
 import { staggerContainer, fadeUp } from "@/motion/variants";
-import { cn } from "@/lib/utils";
 
-function FaqAccordionItem({
+function FaqRow({
   item,
-  index,
   isOpen,
   onToggle,
 }: {
   item: FaqItem;
-  index: number;
   isOpen: boolean;
   onToggle: () => void;
 }) {
   const reduced = useReducedMotion() ?? false;
 
   return (
-    <m.div
-      variants={fadeUp}
-      layout={!reduced}
-      className={cn(
-        "faq-item group relative overflow-hidden rounded-2xl border transition-colors duration-300",
-        isOpen
-          ? "border-primary/30 bg-[var(--faq-item-open-bg)] shadow-[var(--faq-item-open-shadow)]"
-          : "border-[var(--faq-border)] bg-[var(--faq-item-bg)] hover:border-primary/20 hover:shadow-[var(--faq-item-hover-shadow)]"
-      )}
-    >
-      <m.div
-        className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/10 blur-2xl"
-        animate={
-          isOpen && !reduced
-            ? { opacity: 1, scale: 1.2 }
-            : { opacity: 0, scale: 0.8 }
-        }
-        transition={{ duration: DURATION.normal, ease: EASE.out }}
-      />
-
+    <m.div variants={fadeUp} className="faq-row border-b border-[var(--faq-row-border)] last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="relative flex w-full items-start gap-4 px-5 py-5 text-left sm:px-6 sm:py-6"
+        className="flex w-full items-center justify-between gap-6 py-6 text-left sm:py-7 md:py-8"
       >
-        <span className="mt-0.5 shrink-0 font-mono text-xs font-semibold tabular-nums text-primary/70 sm:text-sm">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <span className="flex-1 pr-2 text-base font-semibold leading-snug text-foreground sm:text-lg">
+        <span className="text-base font-medium leading-snug text-[var(--faq-question)] sm:text-lg md:text-xl">
           {item.question}
         </span>
 
         <m.span
-          className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--faq-border)] bg-[var(--faq-icon-bg)] text-foreground"
-          animate={{ rotate: isOpen ? 45 : 0 }}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--faq-toggle-bg)] text-[var(--faq-question)] sm:h-10 sm:w-10"
+          animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: DURATION.fast, ease: EASE.out }}
         >
-          <Plus size={18} strokeWidth={2.25} />
+          <ChevronDown size={18} strokeWidth={2} className="sm:h-5 sm:w-5" />
         </m.span>
       </button>
 
       <AnimatePresence initial={false}>
         {isOpen && (
           <m.div
-            key="content"
+            key="answer"
             initial={reduced ? false : { height: 0, opacity: 0 }}
-            animate={
-              reduced
-                ? { opacity: 1 }
-                : { height: "auto", opacity: 1 }
-            }
+            animate={reduced ? { opacity: 1 } : { height: "auto", opacity: 1 }}
             exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
             transition={{
               height: { duration: DURATION.normal, ease: EASE.out },
@@ -83,15 +52,9 @@ function FaqAccordionItem({
             }}
             className="overflow-hidden"
           >
-            <m.p
-              initial={reduced ? false : { y: 8 }}
-              animate={{ y: 0 }}
-              exit={{ y: 4 }}
-              transition={{ duration: DURATION.fast, ease: EASE.out }}
-              className="border-t border-[var(--faq-border)] px-5 pb-5 pt-0 text-sm leading-relaxed text-muted-foreground sm:px-6 sm:pb-6 sm:pl-[3.25rem] sm:text-base"
-            >
-              <span className="block pt-4">{item.answer}</span>
-            </m.p>
+            <p className="max-w-2xl pb-6 text-sm leading-relaxed text-[var(--faq-answer)] sm:pb-7 sm:text-base md:pb-8">
+              {item.answer}
+            </p>
           </m.div>
         )}
       </AnimatePresence>
@@ -100,7 +63,7 @@ function FaqAccordionItem({
 }
 
 export function FAQs() {
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -109,66 +72,45 @@ export function FAQs() {
   return (
     <section
       id="faqs"
-      className="faq-section relative overflow-hidden scroll-mt-28 py-20 sm:py-24 md:py-32"
+      className="faq-section relative overflow-hidden scroll-mt-28 py-20 sm:py-28 md:py-32"
     >
-      <m.div
-        className="pointer-events-none absolute left-1/4 top-20 h-72 w-72 rounded-full bg-primary/8 blur-[100px]"
-        animate={{ x: [0, 24, 0], y: [0, -16, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
-      />
-      <m.div
-        className="pointer-events-none absolute bottom-10 right-1/4 h-64 w-64 rounded-full bg-violet-500/10 blur-[90px] dark:bg-violet-500/15"
-        animate={{ x: [0, -20, 0], y: [0, 12, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      <div
+        className="faq-section-glow pointer-events-none absolute -left-32 top-1/4 h-[min(520px,80vw)] w-[min(520px,80vw)] -translate-y-1/2 rounded-full"
         aria-hidden
       />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
-        <SectionHeader
-          number="03"
-          label="FAQ"
-          title={
-            <>
-              Questions, <span className="text-primary italic">answered.</span>
-            </>
-          }
-        />
+        <m.header
+          className="mx-auto mb-12 max-w-3xl text-center sm:mb-16 md:mb-20"
+          initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          viewport={VIEWPORT}
+          transition={{ duration: DURATION.slow, ease: EASE.out }}
+        >
+          <h2 className="text-4xl font-bold tracking-tight text-[var(--faq-question)] sm:text-5xl md:text-6xl">
+            FAQs
+          </h2>
+          <p className="mt-3 text-base text-[var(--faq-answer)] sm:mt-4 sm:text-lg">
+            A few common questions, answered simply.
+          </p>
+        </m.header>
 
         <m.div
-          className="mx-auto max-w-3xl space-y-3 sm:space-y-4"
-          variants={staggerContainer(0.08, 0.1)}
+          className="mx-auto max-w-3xl"
+          variants={staggerContainer(0.08, 0.06)}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
         >
-          {faqs.map((item, index) => (
-            <FaqAccordionItem
+          {faqs.map((item) => (
+            <FaqRow
               key={item.id}
               item={item}
-              index={index}
               isOpen={openId === item.id}
               onToggle={() => toggle(item.id)}
             />
           ))}
         </m.div>
-
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEWPORT}
-          transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.3 }}
-          className="mx-auto mt-10 max-w-xl text-center text-sm text-muted-foreground sm:mt-12 sm:text-base"
-        >
-          Still curious?{" "}
-          <a
-            href="#contact"
-            className="font-medium text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-80"
-          >
-            Drop me a message
-          </a>{" "}
-          — I&apos;m happy to help.
-        </m.p>
       </div>
     </section>
   );

@@ -203,31 +203,53 @@
   border: 1px solid var(--footer-social-border);
 }
 
-/* FAQ section */
+/* FAQ section — minimal accordion */
 :root {
-  --faq-item-bg: #ffffff;
-  --faq-item-open-bg: #ffffff;
-  --faq-border: rgba(15, 23, 42, 0.1);
-  --faq-icon-bg: rgba(255, 255, 255, 0.9);
-  --faq-item-hover-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.12);
-  --faq-item-open-shadow: 0 12px 40px -12px rgba(37, 99, 235, 0.18);
+  --faq-section-bg: #ffffff;
+  --faq-question: #0f172a;
+  --faq-answer: #64748b;
+  --faq-row-border: rgba(15, 23, 42, 0.08);
+  --faq-toggle-bg: #f1f3f6;
+  --faq-glow: rgba(139, 92, 246, 0.08);
 }
 
 .dark {
-  --faq-item-bg: rgba(255, 255, 255, 0.03);
-  --faq-item-open-bg: rgba(255, 255, 255, 0.06);
-  --faq-border: rgba(255, 255, 255, 0.08);
-  --faq-icon-bg: rgba(255, 255, 255, 0.05);
-  --faq-item-hover-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  --faq-item-open-shadow: 0 12px 48px rgba(59, 130, 246, 0.12);
+  --faq-section-bg: #000000;
+  --faq-question: #ffffff;
+  --faq-answer: rgba(255, 255, 255, 0.55);
+  --faq-row-border: rgba(255, 255, 255, 0.08);
+  --faq-toggle-bg: #1a1a1a;
+  --faq-glow: rgba(120, 40, 80, 0.35);
 }
 
 .faq-section {
-  background: #ffffff;
+  background: var(--faq-section-bg);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
-.dark .faq-section {
-  background: var(--background);
+.faq-section-glow {
+  background: radial-gradient(
+    circle at center,
+    var(--faq-glow) 0%,
+    transparent 70%
+  );
+}
+
+.faq-row button:hover .faq-toggle-target,
+.faq-row button:focus-visible {
+  outline: none;
+}
+
+.faq-row button:hover span:last-child {
+  background: color-mix(in srgb, var(--faq-toggle-bg) 85%, var(--faq-question) 15%);
 }
 
 /* Featured projects */
@@ -245,10 +267,12 @@
   --project-divider-bg: #ffffff;
   --project-divider-border: #e5e5e5;
   --project-divider-text: #888888;
+  --project-media-bg: #ffffff;
 }
 
 .dark {
   --featured-projects-bg: #0a0a0a;
+  --project-media-bg: #0a0a0a;
   --project-card-bg: #111111;
   --project-card-border: #222222;
   --project-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
@@ -263,14 +287,31 @@
   --project-divider-text: #888888;
 }
 
+/* Uniform cover frame for every project card */
 .featured-project-media {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   width: 100%;
 }
 
 .featured-project-media img {
   object-fit: cover;
   object-position: center;
+}
+
+.featured-project-card {
+  width: 100%;
+}
+
+:root {
+  --impact-stats-bg: #ffffff;
+}
+
+.dark {
+  --impact-stats-bg: #000000;
+}
+
+.impact-stats {
+  background: var(--impact-stats-bg);
 }
 
 .featured-projects {

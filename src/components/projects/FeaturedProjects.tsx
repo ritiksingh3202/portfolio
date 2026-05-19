@@ -21,20 +21,15 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
       variants={fadeUp}
       whileHover={{ y: -6 }}
       transition={{ duration: DURATION.normal, ease: EASE.out }}
-      className="featured-project-card group cursor-pointer"
+      className="featured-project-card group flex h-full w-full cursor-pointer flex-col"
     >
       <div
-        className="featured-project-media relative w-full overflow-hidden rounded-3xl border border-[var(--project-card-border)] bg-[var(--project-card-bg)] shadow-[var(--project-card-shadow)] transition-shadow duration-300 group-hover:shadow-[var(--project-card-hover-shadow)]"
-        style={
-          {
-            "--project-glow": project.iconColor,
-            aspectRatio: "4 / 3",
-          } as React.CSSProperties
-        }
+        className="featured-project-media relative w-full shrink-0 overflow-hidden rounded-2xl border border-[var(--project-card-border)] bg-[var(--project-media-bg)] shadow-[var(--project-card-shadow)] transition-shadow duration-300 group-hover:shadow-[var(--project-card-hover-shadow)] sm:rounded-[1.35rem]"
+        style={{ "--project-glow": project.iconColor } as React.CSSProperties}
       >
         <m.div
-          className="absolute inset-0 h-full w-full"
-          whileHover={{ scale: 1.05 }}
+          className="absolute inset-0"
+          whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.55, ease: EASE.out }}
         >
           <Image
@@ -42,7 +37,8 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
             alt={`${project.name} cover`}
             fill
             className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 540px"
+            priority={project.id <= 2}
           />
         </m.div>
         <div
@@ -53,41 +49,43 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
         />
       </div>
 
-      <div className="mt-5 flex items-center gap-3 sm:mt-6">
-        <span
-          className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold text-white shadow-md sm:h-11 sm:w-11"
-          style={{ backgroundColor: project.iconColor }}
-        >
-          {project.iconImage ? (
-            <Image
-              src={project.iconImage}
-              alt=""
-              width={44}
-              height={44}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            initial
-          )}
+      <div className="flex flex-1 flex-col pt-4 sm:pt-5">
+        <div className="flex items-center gap-2.5">
+          <span
+            className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-bold text-white shadow-md sm:h-10 sm:w-10"
+            style={{ backgroundColor: project.iconColor }}
+          >
+            {project.iconImage ? (
+              <Image
+                src={project.iconImage}
+                alt=""
+                width={44}
+                height={44}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              initial
+            )}
+          </span>
+          <h3 className="text-lg font-bold tracking-tight text-[var(--project-title)] sm:text-xl">
+            {project.name}
+          </h3>
+        </div>
+
+        <p className="mt-2 min-h-[4.25rem] line-clamp-3 text-sm leading-relaxed text-[var(--project-description)]">
+          {project.description}
+        </p>
+
+        <span className="mt-auto inline-flex w-fit rounded-full border border-[var(--project-tag-border)] bg-[var(--project-tag-bg)] px-3 py-1 pt-4 text-xs font-medium text-[var(--project-tag-text)]">
+          {project.tag}
         </span>
-        <h3 className="text-xl font-bold tracking-tight text-[var(--project-title)] sm:text-2xl">
-          {project.name}
-        </h3>
       </div>
-
-      <p className="mt-2 text-sm leading-relaxed text-[var(--project-description)] sm:text-base">
-        {project.description}
-      </p>
-
-      <span className="mt-4 inline-flex rounded-full border border-[var(--project-tag-border)] bg-[var(--project-tag-bg)] px-3.5 py-1.5 text-xs font-medium text-[var(--project-tag-text)] sm:text-sm">
-        {project.tag}
-      </span>
     </m.article>
   );
 
   if (project.href) {
     return (
-      <Link href={project.href} className="block outline-none">
+      <Link href={project.href} className="block h-full w-full outline-none">
         {card}
       </Link>
     );
@@ -115,7 +113,7 @@ function CategoryDivider({ label }: { label: string }) {
 function ProjectGrid({ projects }: { projects: FeaturedProject[] }) {
   return (
     <m.div
-      className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-14 lg:gap-x-12 lg:gap-y-16"
+      className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:items-stretch md:gap-x-8 md:gap-y-12 lg:gap-x-10"
       variants={staggerContainer(0.1, 0.05)}
       initial="hidden"
       whileInView="visible"
@@ -139,7 +137,7 @@ export default function FeaturedProjects({
       id="projects"
       className="featured-projects relative scroll-mt-28 overflow-hidden py-20 sm:py-24 md:py-32"
     >
-      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <m.header
           className="mx-auto mb-14 max-w-2xl text-center sm:mb-16 md:mb-20"
           initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}

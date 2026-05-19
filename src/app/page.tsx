@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Hero } from "@/sections/Hero";
+import { ImpactStats } from "@/sections/ImpactStats";
 import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import { FAQs } from "@/sections/FAQs";
 import { contact } from "@/data/about";
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <ImpactStats />
       <FeaturedProjects />
       <FAQs />
       <Footer

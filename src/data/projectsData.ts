@@ -7,6 +7,8 @@ export type FeaturedProject = {
   tag: string;
   category: ProjectCategory;
   image: string;
+  /** Native cover aspect ratio (width / height) — keeps frames gap-free */
+  aspectRatio: string;
   iconColor: string;
   iconImage?: string;
   href?: string;
@@ -21,6 +23,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Web App",
     category: "web",
     image: "/project_assets/commonsia/commonsia_cover.png",
+    aspectRatio: "1409 / 1117",
     iconColor: "#6366f1",
   },
   {
@@ -31,6 +34,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "SaaS Landing Page",
     category: "web",
     image: "/project_assets/resilens/resilens_cover.png",
+    aspectRatio: "3 / 2",
     iconColor: "#0ea5e9",
   },
   {
@@ -41,6 +45,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Web App",
     category: "web",
     image: "/project_assets/code-review/code-review_cover.png",
+    aspectRatio: "3 / 2",
     iconColor: "#8b5cf6",
   },
   {
@@ -51,6 +56,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Portfolio Website",
     category: "web",
     image: "/project_assets/portfolio/portfolio_cover.png",
+    aspectRatio: "3 / 2",
     iconColor: "#2563eb",
   },
   {
@@ -61,6 +67,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "iOS App",
     category: "app",
     image: "/project_assets/gold-app/gold_cover.png",
+    aspectRatio: "1448 / 1086",
     iconColor: "#d97706",
   },
   {
@@ -71,6 +78,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "Android App",
     category: "app",
     image: "/project_assets/edunova-app/edunova_cover.png",
+    aspectRatio: "1448 / 1086",
     iconColor: "#10b981",
   },
 ];

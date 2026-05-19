@@ -7,38 +7,32 @@ export type FaqItem = {
 export const faqs: FaqItem[] = [
   {
     id: "services",
-    question: "What kind of projects do you take on?",
+    question: "What services do you offer?",
     answer:
-      "I build full stack web and mobile products — SaaS dashboards, marketing sites, MVPs, and internal tools. I handle frontend, APIs, databases, and deployment, with a strong focus on clean UI and smooth interactions.",
+      "Full stack web and mobile development — SaaS dashboards, marketing sites, MVPs, and internal tools. I handle UI, APIs, databases, and deployment with a focus on clean design and smooth interactions.",
   },
   {
     id: "timeline",
-    question: "How long does a typical project take?",
+    question: "How long does a project usually take?",
     answer:
-      "A focused landing page or small feature might take 1–2 weeks. Full products usually run 4–12 weeks depending on scope. I share a clear timeline and milestones after we align on requirements.",
+      "A landing page or small feature often takes 1–2 weeks. Full products typically run 4–12 weeks depending on scope. You'll get a clear timeline and milestones once we align on requirements.",
   },
   {
-    id: "remote",
-    question: "Do you work remotely?",
+    id: "revisions",
+    question: "Can I ask for more revisions if needed?",
     answer:
-      "Yes. I collaborate with clients worldwide over async updates and scheduled calls. I'm comfortable with tools like GitHub, Figma, Slack, and Notion to keep everything transparent.",
+      "Yes. I build in feedback rounds at key milestones so you can refine before launch. If scope grows, we'll agree on any extra revisions upfront so everything stays transparent.",
   },
   {
-    id: "stack",
-    question: "What technologies do you use?",
+    id: "tools",
+    question: "What tools do you use?",
     answer:
-      "React, Next.js, TypeScript, Node.js, React Native, Tailwind CSS, and modern backends (PostgreSQL, Supabase, REST/GraphQL). I pick the stack that fits performance, maintainability, and your product goals.",
+      "React, Next.js, TypeScript, Node.js, React Native, Tailwind CSS, Figma, and modern backends like PostgreSQL and Supabase. I choose tools that fit your product goals and long-term maintainability.",
   },
   {
-    id: "process",
-    question: "What does your workflow look like?",
+    id: "code",
+    question: "Will I need to code anything?",
     answer:
-      "Discovery → wireframes or quick prototypes → iterative builds with regular demos → polish, testing, and handoff. You get visible progress early so feedback is easy at every stage.",
-  },
-  {
-    id: "start",
-    question: "How do we get started?",
-    answer:
-      "Send a message through the contact form below with your idea, timeline, and budget range. I'll reply within 24–48 hours with next steps and whether we're a good fit.",
+      "No. I handle design and development end to end. You'll review progress, share feedback, and approve milestones — no coding required on your side unless you want to collaborate technically.",
   },
 ];
